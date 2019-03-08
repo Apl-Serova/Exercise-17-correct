@@ -1,0 +1,19 @@
+import java.io.*;
+public class Exercise17 {
+    public static void main (String [] args) {
+    String str;
+    BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
+    System.out.println("Введите 'stop', чтобы закончить ввод");
+    try (FileWriter fw = new FileWriter("your text.txt")) {
+        do {
+            System.out.println(": ");
+            str = buf.readLine();
+            if (str.compareTo("stop") == 0) break;
+            str = str + "\r\n" ;
+        fw.write(str);
+        } while (str.compareTo("stop") != 0);
+    } catch (IOException exc) {
+        System.out.println("Произошла ошибка: " + exc);
+    }
+    }
+}
